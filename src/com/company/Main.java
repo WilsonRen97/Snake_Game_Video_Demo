@@ -183,15 +183,13 @@ public class Main extends JPanel implements KeyListener {
 
     public void write_a_file(int score) {
         try {
-            FileWriter myWriter = new FileWriter("filename.txt");
             if (score > highest_score) {
+                FileWriter myWriter = new FileWriter("filename.txt");
                 System.out.println("rewriting score...");
                 myWriter.write("" + score);
                 highest_score = score;
-            } else {
-                myWriter.write("" + highest_score);
+                myWriter.close();
             }
-            myWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
